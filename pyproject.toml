@@ -1,0 +1,44 @@
+[project]
+name = "website-qa-rag"
+version = "0.1.0"
+description = "Website Q&A RAG with FAISS + MiniLM + Ollama (Streamlit)"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"   # 3.11 recommended
+dependencies = [
+  # app/runtime
+  "streamlit>=1.38,<2",
+  "requests>=2.32",
+  "beautifulsoup4>=4.12",
+  "lxml>=5.2",
+  "faiss-cpu>=1.8.0.post1,<1.9",
+
+  # langchain stack (modern split)
+  "langchain>=0.3.7,<0.4",
+  "langchain-community>=0.3.7,<0.4",
+  "langchain-text-splitters>=0.3.2,<0.4",
+
+  # embeddings
+  "sentence-transformers>=3.0.1,<4",
+  # NOTE: sentence-transformers pulls torch; if your platform misses a wheel,
+  # install PyTorch manually per pytorch.org instructions, then re-run `uv sync`.
+]
+
+[project.optional-dependencies]
+# Enable JS-rendered websites (optional)
+playwright = [
+  "playwright>=1.47",
+]
+
+# Optional dev helpers (format/lint)
+dev = [
+  "ruff>=0.6",
+]
+
+[tool.uv]
+# Lock to a stable interpreter for reproducibility
+python-preference = "only-managed"
+
+# If you want `uv run start` as a shortcut (optional)
+[tool.uv.scripts]
+start = "streamlit run app.py"
+crawl = "python -c 'print(\"Enter a URL in the UI and click Crawl & Index\")'"

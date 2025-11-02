@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.env
+.env.*
+
+# Virtualenv / tools
+.venv/
+.env/
+.conda/
+.cache/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Logs / misc
+*.log
+
+# If you want to keep uv.lock in git, remove the next line
+# uv.lock
